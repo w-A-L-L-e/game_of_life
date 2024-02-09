@@ -4,7 +4,7 @@ Simple and quick implementation of Game of Life using SDL2 running on my mac.
 
 https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 
-# Running
+## Build and run
 
 ```
 make
