@@ -7,8 +7,11 @@ https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 ## Build and run
 
 ```
-make
-./game_of_life
+$ xcode-select --install
+$ brew install sdl2
+
+$ make
+$ ./game_of_life
 ```
 
 Press F for full screeen. Q to quit.
