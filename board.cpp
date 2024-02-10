@@ -248,7 +248,7 @@ void Board::draw(Screen *scr){
   scr->setColor(245,225,0);  
 
   float bw = (int)(scr->width / board->size());
-  float bh = (int)(scr->height / (*board)[0].size()) - 0.18;
+  float bh = (int)(scr->height / (*board)[0].size()) - 0.2;
 
   // normally just take min bw, bhw... we know bh is smaller
   // we get square block here
@@ -261,7 +261,7 @@ void Board::draw(Screen *scr){
   for (int x=0; x < (*board).size(); x++) {
     for (int y=0; y < (*board)[x].size(); y++) {
       if ((*board)[x][y] > 0) {
-        scr->fill_rectangle(xoff + (x * bw), yoff + (y * bh), bw, bh);
+        scr->fill_rectangle(xoff + (x * bw), yoff + (y * bh), bw-1, bh-1);
       }
     }
   }

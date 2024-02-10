@@ -19,14 +19,14 @@ description   : Game of life
 
 void seed_guns(Board& game_board){
   game_board.seed_file("./examples/new_gun.cells");
-  game_board.seed_file("./examples/glider_gun.cells", 20, 104);
+  game_board.seed_file("./examples/glider_gun.cells", 20, 74);
 }
 
 int main(int argc, char **argv) {
   Screen screen(800, 600, "Game Of Life", false);
   SDL_ShowCursor(SDL_DISABLE);
 
-  Board game_board(203, 150);
+  Board game_board(160, 120);
   int speed_delay = 60; // higher is slower, (16 or lower is around max 60fps)
 
   long evolutions = 1;
