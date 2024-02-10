@@ -9,7 +9,10 @@ bugreport(log):
 =============================================================================*/
 
 #include "board.h"
-
+#include <fstream>
+#include <string>
+#include <iostream>
+// #include <sstream>
 
 /*-----------------------------------------------------------------------------
 name        : Board
@@ -23,7 +26,6 @@ Board::Board(int width, int height){
   board = new matrix();
   next_board = new matrix();
   resize(width, height);
-  seed();
 }
 
 
@@ -113,11 +115,42 @@ void Board::seed() {
   (*board)[65][76] = 1;
 }
 
-// 
-// void Board::seed_file(char* filename){
-//   // TODO: read in a cell file here...
-// }
-//
+
+/*-----------------------------------------------------------------------------
+name        : seed_file 
+description : get cell value and given x,y if out of bounds return 0 (dead)
+parameters  : char* filename
+return      : 
+exceptions  : 
+algorithm   : trivial
+-----------------------------------------------------------------------------*/
+void Board::seed_file(const char* filename, int xpos, int ypos) {
+  std::ifstream cfile(filename);
+
+  std::string line;
+  int rows = 0;
+  int cols = 0;
+
+  while (std::getline(cfile, line)) {
+    if (line.size() > 0 && line[0] == '!') continue;  // skip comment line
+
+
+    rows ++;
+    if ((line.size()+xpos) > cols) cols = line.size() + xpos;
+
+    // std::cout << rows << " : " << cols << " " << line << std::endl;
+
+    // make sure cells fit on board
+    if ( cols > board->size() ) board->resize(cols);
+    if ( rows + ypos > board->size() ) board->resize(rows + ypos);
+
+    for (int pos = 0; pos < line.size(); pos++) {
+      if (line[pos]== 'O') (*board)[xpos+pos][rows+ypos] = 1;
+      else  (*board)[xpos+pos][rows+ypos] = 0;
+    }
+  }
+}
+
 
 /*-----------------------------------------------------------------------------
 name        : getPos
@@ -215,20 +248,20 @@ void Board::draw(Screen *scr){
   scr->setColor(245,225,0);  
 
   float bw = (int)(scr->width / board->size());
-  float bh = (int)(scr->height / (*board)[0].size()) - 0.2;
+  float bh = (int)(scr->height / (*board)[0].size()) - 0.18;
 
   // normally just take min bw, bhw... we know bh is smaller
   // we get square block here
   bw = bh;
 
   // add some padding top+left
-  int xoff = 10; // 110 offset for 100x100 and 200x200;
-  int yoff = 10;
+  int xoff = 13; // 110 offset for 100x100 and 200x200;
+  int yoff = 16;
 
   for (int x=0; x < (*board).size(); x++) {
     for (int y=0; y < (*board)[x].size(); y++) {
       if ((*board)[x][y] > 0) {
-        scr->fill_rectangle(xoff + (x * bw), yoff + (y * bh), bw-1, bh-1);
+        scr->fill_rectangle(xoff + (x * bw), yoff + (y * bh), bw, bh);
       }
     }
   }

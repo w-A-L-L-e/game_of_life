@@ -27,6 +27,7 @@ class Board {
     //==============
     void resize(int width, int height);
     void seed();
+    void seed_file(const char* filename, int xpos=0, int ypos=0);
     int getPos(int x, int y);
     int getLiveNeighbours(int x, int y);
     void evolve();
