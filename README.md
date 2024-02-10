@@ -16,7 +16,7 @@ $ ./game_of_life
 
 Press F for full screeen. Q to quit.
 
-<img width="804" alt="game_of_life_running" src="https://github.com/w-A-L-L-e/game_of_life/assets/710803/7b6471df-dedf-4989-8559-40d318f15a60">
+<img width="812" alt="game_of_life_running" src="https://github.com/w-A-L-L-e/game_of_life/assets/710803/ff198b5d-77c2-4ace-9998-59ed7f9ac8d0">
 
 ## Future ideas / TODO's
 - We can read cell files from examples but maybe allow reading using command line args.
