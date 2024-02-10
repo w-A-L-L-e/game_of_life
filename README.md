@@ -18,6 +18,8 @@ Press F for full screeen. Q to quit.
 
 <img width="804" alt="game_of_life_running" src="https://github.com/w-A-L-L-e/game_of_life/assets/710803/7b6471df-dedf-4989-8559-40d318f15a60">
 
-
-TODO: some more key mappings to speed up/down zoom in/out and maybe add a way to load in a seed from a file...
+## Future ideas / TODO's
+- We can read cell files from examples but maybe allow reading using command line args.
+- Zoom in/out and speed up/down with some keypresses etc.
+- Allow drawing new things with an editor.
 
