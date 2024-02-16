@@ -13,7 +13,7 @@ bugreport(log):
 
 #include "screen.h"
 
-typedef std::vector<std::vector<int> > matrix;
+typedef std::vector< std::vector<int> > matrix;
 
 class Board {
 
